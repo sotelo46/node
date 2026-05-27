@@ -1,3 +1,4 @@
+//-----ejs---------npm install ejs----npm list ejs
 // 1.- Importar Express
 const express = require('express');
 
@@ -5,18 +6,22 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const mi_variable = "Hola mundo";
-// 3.- Definier ruta principal
-app.get('/',(req,res)=>{
-    res.send(`!Servidor Express funcionando--ss!${mi_variable}`);
+// Configurar EJS como motor de plantillas
+app.set('view engine', 'ejs');
+app.set('views', './views');
+// Datos de ejemplo
+let productos = [
+  { id: 1, nombre: 'Laptop', precio: 1000 },
+  { id: 2, nombre: 'Mouse', precio: 25 },
+  { id: 3, nombre: 'Teclado', precio: 50 }
+];
+
+// Ruta principal
+app.get('/', (req, res) => {
+  res.render('index', { productos });
 });
 
-//Get
-app.get('/productos',(req,res)=>{
- res.send('Lista de productos');
-});
-
-//4.- Iniciar servidor
-app.listen(PORT, ()=>{
-    console.log('Servidor corriendo');
+// Iniciar servidor
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });

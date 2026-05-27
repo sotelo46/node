@@ -1,0 +1,19 @@
+# Ignorar carpeta completa
+node_modules/
+dist/
+build/
+temp/
+
+# Ignorar archivos específicos
+.env
+config.local.js
+.DS_Store
+
+# Ignorar por extensión
+*.log
+*.tmp
+*.bak
+
+# Ignorar por patrón
+test-*.js
+temp-*
