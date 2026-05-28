@@ -47,10 +47,7 @@ app.get('/', (req, res) => {
   res.render('index', { productos });
 });
 
-// Ruta principal
-app.get('/', (req, res) => {
-  res.render('index', { productos });
-});
+
 
 // Ruta para ver un producto específico
 app.get('/producto/:id', (req, res) => {

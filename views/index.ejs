@@ -5,30 +5,32 @@
 </head>
 <body>
     <h1>Gestión de Productos</h1>
-    
+
     <h2>Agregar Producto</h2>
     <form action="/productos" method="POST">
         <input type="text" name="nombre" placeholder="Nombre" required>
         <input type="number" name="precio" placeholder="Precio" step="0.01" required>
         <button type="submit">Crear Producto</button>
     </form>
-    
+
     <hr>
-    
+
     <h2>Lista de Productos</h2>
     <ul>
-        <% for(let i = 0; i < productos.length; i++) { %>
-            <li>ID: <%= productos[i].id %> - <%= productos[i].nombre %> - $<%= productos[i].precio %></li>
-        <% } %>
+        <% productos.forEach(producto => { %>
+            <li>ID: <%= producto.id %> - <%= producto.nombre %> - $<%= producto.precio %></li>
+        <% }) %>
     </ul>
-    
+
     <hr>
-    
-    <h3>Ver productos específicos:</h3>
+
+    <h2>Ver productos específicos:</h2>
     <ul>
-        <li><a href="/producto/1">Ver producto ID 1</a></li>
-        <li><a href="/producto/2">Ver producto ID 2</a></li>
-        <li><a href="/producto/3">Ver producto ID 3</a></li>
+        <% productos.forEach(producto => { %>
+            <li>
+                <a href="/producto/<%= producto.id %>">Ver producto ID <%= producto.id %> - <%= producto.nombre %></a>
+            </li>
+        <% }) %>
     </ul>
 </body>
 </html>
